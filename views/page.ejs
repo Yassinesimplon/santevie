@@ -1,0 +1,84 @@
+<h1 style="margin-left: 45%;">hello yassine</h1>
+<section style="display: flex; justify-content: space-between;">
+    <div style="width: 40%;">
+        <table style="border:2px solid black">
+            <tr>
+                <th>id</th>
+                <th>nom</th>
+                <th>prenom</th>
+                <th>age</th>
+                <th>genre</th>
+                <th>phone</th>
+            </tr>
+
+            <% patient.forEach((pa)=> { %>
+                <tr>
+                    <td>
+                        <%= pa.id %>
+                    </td>
+                    <td>
+                        <%= pa.nom %>
+                    </td>
+                    <td>
+                        <%= pa.prenom %>
+                    </td>
+                    <td>
+                        <%= pa.age %>
+                    </td>
+                    <td>
+                        <%= pa.genre %>
+                    </td>
+                    <td>
+                        <%= pa.phone %>
+                    </td>
+                </tr>
+                <% }) %>
+        </table>
+
+        <p>number des patients : <%= count %>
+        </p>
+
+        <a href="/add"> <input type="submit" value="ajouter patient" style="padding: 10px;"></a>
+    </div>
+
+    <div style="width: 40%; float: right;">
+        <table border>
+
+            <tr>
+                <th>id</th>
+                <th>date</th>
+                <th>patient</th>
+                <th>time</th>
+            </tr>
+            <% rndv.forEach((rn)=> { %>
+                <tr>
+                    <td>
+                        <%= rn.id_rndv %>
+                    </td>
+                    <td>
+                        <%= rn.nom+" "+rn.prenom %>
+            </td>
+            <td>
+                <%= rn.date .toString().slice(4,15) %>
+            </td>
+            <td>
+                <%= rn.time %>
+            </td> 
+            <% })%>
+</table>
+<p>number des RNDV : <%= countRndv %></p>
+
+    <a href=" /add/rndv"> <input type="submit" value="ajouter RNDV" style="padding: 10px;"></a>
+
+    </div>
+</section>
+<!-- <form action="/patients/<%= patient.id %>/delete" method="post">
+    <input type="submit" value="Supprimer">
+</form> -->
+<td>
+    <form action="/create/:id/delete" method="post">
+      <input type="hidden" name="id" value="<%= patient._id %>">
+      <input type="submit" value="Supprimer">
+    </form>
+  </td>
+  
